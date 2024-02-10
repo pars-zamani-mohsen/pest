@@ -4,14 +4,14 @@ use App\Models\Product;
 use App\Models\Tag;
 use App\Models\User;
 
-test('createUser', function () {
+test('create user', function () {
     $user = User::factory()->create();
 
     expect($user)
         ->toBeInstanceOf(User::class);
 });
 
-test('updateUser', function () {
+test('update user', function () {
     $user = User::inRandomOrder()->first() ?? User::factory()->create();
 
     $user->update([
@@ -25,7 +25,7 @@ test('updateUser', function () {
         ->and($user->name)->toBe('mohsen');
 });
 
-test('relationUserWithTaggable', function () {
+test('relation user with taggable', function () {
     $user = User::inRandomOrder()->first() ?? User::factory()->create();
     $tag = Tag::inRandomOrder()->first() ?? Tag::factory()->create();
 
@@ -35,7 +35,7 @@ test('relationUserWithTaggable', function () {
         ->and($user->tags->first())->toBeInstanceOf(Tag::class);
 });
 
-test('relationUserWithProduct', function () {
+test('relation user with product', function () {
     $user = User::factory()->create();
     $productData = Product::factory(5)->for($user)->make()->toArray();
 
@@ -46,7 +46,7 @@ test('relationUserWithProduct', function () {
         ->and($user->productCreated->first())->toBeInstanceOf(Product::class);
 });
 
-test('relationUserWithTag', function () {
+test('relation user with tag', function () {
     $user = User::factory()->create();
     $tagData = Tag::factory(5)->for($user)->make()->toArray();
 

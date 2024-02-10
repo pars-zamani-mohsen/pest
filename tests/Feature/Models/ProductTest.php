@@ -4,14 +4,14 @@ use App\Models\Product;
 use App\Models\Tag;
 use App\Models\User;
 
-test('createProduct', function () {
+test('create product', function () {
     $product = Product::factory()->create();
 
     expect($product)
         ->toBeInstanceOf(Product::class);
 });
 
-test('UpdateProduct', function () {
+test('update product', function () {
     $product =  Product::inRandomOrder()->first() ?? Product::factory()->create();
 
     $product->update([
@@ -26,14 +26,14 @@ test('UpdateProduct', function () {
         ->and($product->price)->toBe(100.5);
 });
 
-test('relationProductWithUser', function () {
+test('relation product with user', function () {
     $product = Product::inRandomOrder()->first() ?? Product::factory()->create();
 
     expect($product)->toBeInstanceOf(Product::class)
         ->and($product->user)->toBeInstanceOf(User::class);
 });
 
-test('relationProductWithTag', function () {
+test('relation product with tag', function () {
     $product = Product::inRandomOrder()->first() ?? Product::factory()->create();
     $tag = Tag::inRandomOrder()->first() ?? Tag::factory()->create();
 

@@ -3,14 +3,14 @@
 use App\Models\Tag;
 use App\Models\User;
 
-test('createTag', function () {
+test('create tag', function () {
     $tag = Tag::factory()->create();
 
     expect($tag)
         ->toBeInstanceOf(Tag::class);
 });
 
-test('UpdateTag', function () {
+test('Update tag', function () {
     $tag =  Tag::inRandomOrder()->first() ?? Tag::factory()->create();
 
     $tag->update([
@@ -21,7 +21,7 @@ test('UpdateTag', function () {
         ->and($tag->name)->toBe('VIP');
 });
 
-test('relationTagWithUser', function () {
+test('relation tag with user', function () {
     $tag = Tag::inRandomOrder()->first() ?? Tag::factory()->create();
 
     expect($tag)->toBeInstanceOf(Tag::class)
