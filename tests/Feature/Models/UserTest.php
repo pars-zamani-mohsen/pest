@@ -32,7 +32,9 @@ test('relation user with taggable', function () {
     $user->tags()->attach($tag->id);
 
     expect($user)->toBeInstanceOf(User::class)
+        ->and($user->tags()->count())->toBeGreaterThanOrEqual(1)
         ->and($user->tags->first())->toBeInstanceOf(Tag::class);
+    $this->assertTrue($user->tags->contains($tag));
 });
 
 test('relation user with product', function () {
